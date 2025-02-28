@@ -41,7 +41,7 @@ public function insert($arrayObjetos){
 }
 
 
-public function create(){}
+public function insert($){}
 
 public function read(){}
 
