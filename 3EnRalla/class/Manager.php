@@ -10,7 +10,7 @@ class Manager{
 
 public function create(){}
 
-public function read(){}
+public function read(): void{}
 
 public function update(){}
 
