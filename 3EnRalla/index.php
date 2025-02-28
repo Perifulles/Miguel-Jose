@@ -13,9 +13,12 @@
 
 <?php
 require_once("./class/Partida.php");
+require_once("./class/Manager.php");
 $Partida = new Partida();
-$Partida->mostrartablero();
-
+#$Partida->mostrartablero();
+$Manager = new Manager("partida.json");
+$Manager->insert($Partida);
+$Manager->read();
 
 
 

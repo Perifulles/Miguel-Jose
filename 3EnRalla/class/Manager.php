@@ -19,7 +19,7 @@ public function extract(){
         return $arrayObjetos;
     }else{
         foreach ($arrayDeArrays as $array){
-            $arrayObjetos[] = $array->toObjeto();
+            $arrayObjetos[] = Partida::toObjeto($array);
         }
         return $arrayObjetos;
     }
@@ -28,12 +28,10 @@ public function extract(){
 
 }
 
-public function insert($arrayObjetos){
+public function insert($objeto){
     $arrayDeArrays = [];
 
-    foreach ($arrayObjetos as $objeto){
         $arrayDeArrays[] = $objeto->toArray();
-    }
 
     $codificado = json_encode($arrayDeArrays);
 
@@ -41,9 +39,18 @@ public function insert($arrayObjetos){
 }
 
 
-public function insert($){}
+public function read(): void {
+    $objetos = $this->extract();
+    
+    if (empty($objetos)) {
+        echo "No hay datos disponibles.\n";
+    } else {
+        foreach ($objetos as $objeto) {
+            $objeto->mostrartablero();
+        }
+    }
+}
 
-public function read(){}
 
 public function update(){}
 
