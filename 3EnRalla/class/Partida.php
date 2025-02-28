@@ -29,6 +29,19 @@ class Partida{
         
     }
 
+    public function toArray(){
+        return [
+            'ganador' => $this->ganador,
+            'turno' => $this->turno,
+            'tablero' => $this->tablero,
+        ];
+    }
+
+
+    public static function toObjeto($data){
+        return new Partida($data["ganador"], $data["turno"], $data["tablero"]);
+
+    }
 
 
 
