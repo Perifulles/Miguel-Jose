@@ -8,7 +8,6 @@ class Manager{
         $this->rutaJson = $ruta;
 }
 
-
 public function extract(){
     $arrayObjetos = [];
     $codificado = file_get_contents($this->rutaJson);
@@ -38,7 +37,6 @@ public function insert($objeto){
     file_put_contents($this->rutaJson, $codificado);
 }
 
-
 public function read(): void {
     $objetos = $this->extract();
     
@@ -51,8 +49,8 @@ public function read(): void {
     }
 }
 
-
 public function update(){}
+
 
 public function delete(){}
     

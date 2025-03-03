@@ -24,19 +24,6 @@ class Partida{
     echo "</div>";
     }
 
-    public function turno($manager){
-        $arrayObjetos = $manager->extract();
-        $turno = $arrayObjetos[0]->getTurno();
-        if ($turno == "O"){
-            $turno = "X";
-        }else {
-            $turno = "O";
-        }
-        $arrayObjetos[0]->setTurno($turno);
-
-        $manager->insert($arrayObjetos[0]);
-    }
-
     public function toArray(){
         return [
             'ganador' => $this->ganador,
@@ -50,6 +37,19 @@ class Partida{
 
     }
 
+    public function turno($manager){
+        $arrayObjetos = $manager->extract();
+        $turno = $arrayObjetos[0]->getTurno();
+        if ($turno == "O"){
+            $turno = "X";
+        }else {
+            $turno = "O";
+        }
+        $arrayObjetos[0]->setTurno($turno);
+
+        $manager->insert($arrayObjetos[0]);
+    }
+
     public function jugada($play, $manager){
         $libro = $manager->extract();
         $turno = $libro[0]->getTurno();
@@ -57,6 +57,37 @@ class Partida{
         $tablero[$play] = [$turno];
         $libro[0]->setTablero($tablero);
         $manager->insert($libro[0]);
+    }
+
+    public function ganador($manager){
+        $arrayObjetos = $manager->extract();
+        $partida = $arrayObjetos[0];
+        $tablero = $partida->getTablero();
+
+        $c0 = $tablero[0][0];
+        $c1 = $tablero[1][0];
+        $c2 = $tablero[2][0];
+        $c3 = $tablero[3][0];
+        $c4 = $tablero[4][0];
+        $c5 = $tablero[5][0];
+        $c6 = $tablero[6][0];
+        $c7 = $tablero[7][0];
+        $c8 = $tablero[8][0];
+    
+        if (
+            ($c0 == $c1 && $c1 == $c2 && $c1 != "") ||
+            ($c3 == $c4 && $c4 == $c5 && $c3 != "") ||
+            ($c6 == $c7 && $c7 == $c8 && $c6 != "") ||
+            ($c0 == $c3 && $c3 == $c6 && $c0 != "") ||
+            ($c1 == $c4 && $c4 == $c7 && $c1 != "") ||
+            ($c2 == $c5 && $c5 == $c8 && $c2 != "") ||
+            ($c0 == $c4 && $c4 == $c8 && $c0 != "") ||
+            ($c2 == $c4 && $c4 == $c6 && $c2 != "")
+        ) 
+        {return true;}
+        else{return false;}
+
+
     }
 
 

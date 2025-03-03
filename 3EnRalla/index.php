@@ -31,6 +31,12 @@ $movimiento = isset($_POST["borrar"]) ? $_POST["borrar"] : "";
 $Partida->turno($Manager);
 $Partida->jugada($movimiento, $Manager);
 $Manager->read();
+$ganador =$Partida->ganador($Manager);
+
+if ($ganador == false){}
+elseif($ganador == true){
+    echo "La partida ha terminado";
+}
 
 
 
